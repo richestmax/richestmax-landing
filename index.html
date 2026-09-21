@@ -5,48 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI & Enterprise Systems Architect | Максим Криштопа</title>
     <style>
-        /* Сброс стилей и премиальные переменные */
+        /* Сброс базовых стилей и шрифты */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        
-        :root {
-            --bg-color: #030712;
-            --surface-color: #0b1329;
-            --surface-hover: #111c44;
-            --border-color: rgba(255, 255, 255, 0.05);
-            --border-glow: rgba(59, 130, 246, 0.3);
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-        }
-
         body { 
-            background-color: var(--bg-color); 
-            color: var(--text-primary); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #FFFFFF; 
+            color: #1E293B; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.5;
             padding-top: 90px;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container { 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 32px; 
+            padding: 0 40px; 
         }
 
-        /* Премиальная навигация */
+        /* Навигация в стиле минимализма */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 90px;
-            background-color: rgba(3, 7, 18, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-b: 1px solid #F1F5F9;
             z-index: 1000;
         }
         .header-wrap {
@@ -54,323 +41,247 @@
             justify-content: space-between;
             align-items: center;
             height: 100%;
+            border-bottom: 1px solid #E2E8F0;
         }
         .logo {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--text-primary);
+            letter-spacing: 1.5px;
+            color: #0F172A;
             text-decoration: none;
-            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
         }
-        .logo span { color: var(--accent-blue); }
+        .logo span { color: #2563EB; }
         
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
         .nav-links a {
-            color: var(--text-secondary);
+            color: #64748B;
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
+            margin-left: 35px;
+            transition: color 0.15s ease;
         }
-        .nav-links a:hover { color: var(--text-primary); }
-        
-        .btn-nav {
+        .nav-links a:hover { color: #0F172A; }
+        .nav-links a.btn-nav {
             padding: 10px 20px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-            color: #60a5fa !important;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 8px;
-            transition: all 0.3s ease !important;
+            background-color: #0F172A;
+            color: #FFFFFF;
+            border-radius: 6px;
         }
-        .btn-nav:hover {
-            background: var(--accent-blue) !important;
-            color: var(--text-primary) !important;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-            border-color: var(--accent-blue);
-        }
+        .nav-links a.btn-nav:hover { background-color: #1E293B; }
 
-        /* Главный экран (Hero) */
+        /* Главный экран - много воздуха */
         .hero {
             padding: 120px 0 100px 0;
-            text-align: center;
-            position: relative;
-        }
-        .hero-glow {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-x-50%, -y-50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 100%);
-            blur: 80px;
-            pointer-events: none;
-            z-index: 1;
+            max-width: 900px;
         }
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background-color: rgba(255, 255, 255, 0.03);
-            color: #93c5fd;
-            border: 1px solid var(--border-color);
-            border-radius: 100px;
+            padding: 6px 14px;
+            background-color: #F8FAFC;
+            color: #475569;
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.5px;
             margin-bottom: 32px;
-            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
-        }
-        .badge::before {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background-color: #4ade80;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #4ade80;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
         }
         .hero h1 {
-            font-size: 56px;
-            font-weight: 800;
-            color: var(--text-primary);
+            font-size: 52px;
+            font-weight: 700;
+            color: #0F172A;
             line-height: 1.15;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
             letter-spacing: -1.5px;
         }
-        .hero h1 span {
-            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .hero h1 span { color: #2563EB; }
         .hero p {
-            font-size: 19px;
-            color: var(--text-secondary);
+            font-size: 20px;
+            color: #475569;
             max-width: 720px;
-            margin: 0 auto 48px auto;
-            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 48px;
         }
         .hero-btns {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 16px;
         }
         .btn-primary {
-            padding: 16px 36px;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: var(--text-primary);
+            padding: 16px 32px;
+            background-color: #2563EB;
+            color: #FFFFFF;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            transition: background-color 0.15s ease;
         }
-        .btn-primary:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
-        }
+        .btn-primary:hover { background-color: #1D4ED8; }
+        
         .btn-secondary {
-            padding: 16px 36px;
-            background-color: rgba(255, 255, 255, 0.02);
-            color: var(--text-primary);
+            padding: 16px 32px;
+            background-color: #FFFFFF;
+            color: #0F172A;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 15px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            border: 1px solid #E2E8F0;
+            transition: background-color 0.15s ease;
         }
-        .btn-secondary:hover { 
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
+        .btn-secondary:hover { background-color: #F8FAFC; border-color: #CBD5E1; }
 
-        /* Блок Экспертизы */
+        /* Раздел Экспертизы - чистые линии */
+        .section-wrap {
+            padding: 100px 0;
+            border-top: 1px solid #E2E8F0;
+        }
         .grid-three {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-            padding: 100px 0;
-            border-top: 1px solid var(--border-color);
+            gap: 40px;
         }
         .card {
-            background-color: var(--surface-color);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-glow);
-            background-color: var(--surface-hover);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.05);
+            background-color: #FFFFFF;
         }
         .card-num {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent-blue);
-            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2563EB;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
             margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .card-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #0F172A;
             margin-bottom: 16px;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
         }
         .card p {
-            font-size: 14px;
-            color: var(--text-secondary);
+            font-size: 15px;
+            color: #475569;
             line-height: 1.6;
         }
 
-        /* Вызовы Enterprise */
-        .problems-section {
-            padding: 100px 0;
-            background-color: #050b18;
-            border-top: 1px solid var(--border-color);
+        /* Вызовы рынка */
+        .problems-bg {
+            background-color: #F8FAFC;
+            border-top: 1px solid #E2E8F0;
+            border-bottom: 1px solid #E2E8F0;
         }
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 64px auto;
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #64748B;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
         }
-        .section-header h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 16px;
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 56px;
             letter-spacing: -1px;
         }
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 15px;
+        .problem-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            padding: 40px 0;
+            border-top: 1px solid #E2E8F0;
         }
-        .problem-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-            background-color: var(--bg-color);
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            border-left: 4px solid #ef4444;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
+        .problem-item:last-child {
+            padding-bottom: 0;
         }
-        .problem-row:hover {
-            border-color: var(--border-glow);
-            border-left-color: #ef4444;
-            transform: translateX(4px);
-        }
-        .problem-tag {
-            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
-            font-weight: 700;
-            color: #ef4444;
-            font-size: 16px;
-            background: rgba(239, 68, 68, 0.1);
-            padding: 4px 10px;
-            border-radius: 6px;
-        }
-        .problem-text h4 { 
-            color: var(--text-primary); 
-            margin-bottom: 8px; 
-            font-size: 18px; 
+        .problem-index {
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 14px;
             font-weight: 600;
+            color: #EF4444;
         }
-        .problem-text p { 
-            color: var(--text-secondary); 
-            font-size: 15px; 
-            line-height: 1.6;
+        .problem-content h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .problem-content p {
+            color: #475569;
+            font-size: 15px;
+            max-width: 800px;
         }
 
-        /* Контакты */
-        .contacts {
-            padding: 120px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            position: relative;
-        }
+        /* Блок Контактов */
         .contact-box {
-            display: inline-flex;
+            display: flex;
             gap: 60px;
-            background-color: var(--surface-color);
-            padding: 32px 56px;
-            border-radius: 24px;
-            border: 1px solid var(--border-color);
             margin-top: 48px;
-            text-align: left;
-            transition: all 0.3s ease;
-        }
-        .contact-box:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.03);
         }
         .contact-item span {
             display: block;
             font-size: 11px;
-            color: #64748b;
+            color: #94A3B8;
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: 1px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .contact-item a {
-            color: #60a5fa;
+            font-size: 18px;
+            color: #0F172A;
             text-decoration: none;
             font-weight: 600;
-            font-size: 18px;
-            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
-            transition: color 0.2s ease;
+            transition: color 0.15s ease;
         }
-        .contact-item a:hover { color: var(--accent-blue); }
-        
-        .footer-text {
-            margin-top: 80px;
-            text-align: center;
+        .contact-item a:hover { color: #2563EB; }
+
+        footer {
+            margin-top: 100px;
+            padding: 40px 0;
+            border-top: 1px solid #E2E8F0;
             font-size: 12px;
-            color: #475569;
-            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+            color: #94A3B8;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
         }
 
-        /* Адаптивность */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 40px; }
+        /* Мобильная адаптивность */
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
             .nav-links { display: none; }
-            .contact-box { flex-direction: column; gap: 28px; padding: 32px; width: 100%; }
-            .hero-btns { flex-direction: column; gap: 12px; }
-            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+            .problem-item { grid-template-columns: 1fr; gap: 12px; }
+            .contact-box { flex-direction: column; gap: 32px; }
+            .hero-btns { flex-direction: column; }
+            .btn-primary, .btn-secondary { text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container header-wrap">
-            <a href="#" class="logo">RICHEST<span>MAX</span>.RU</a>
-            <nav class="nav-links">
-                <a href="#about">Профиль</a>
-                <a href="#problems">Вызовы</a>
-                <a href="#contact" class="btn-nav">Связаться</a>
-            </nav>
+        <div class="container h-full flex items-center justify-between" style="height: 100%;">
+            <div class="header-wrap" style="width: 100%; border-bottom: none;">
+                <a href="#" class="logo">RICHEST<span>MAX</span>.RU</a>
+                <nav class="nav-links">
+                    <a href="#about">Экспертиза</a>
+                    <a href="#problems">Вызовы</a>
+                    <a href="#contact" class="btn-nav">Начать аудит</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <div class="container">
         <section class="hero">
-            <div class="hero-glow"></div>
             <div class="badge">LOCALLY DEPLOYED AI SYSTEMS</div>
             <h1>Проектирование и аудит <br><span>локальной ИИ-инфраструктуры</span></h1>
             <p>Конвертация неопределенных требований бизнеса в строгую инженерную архитектуру. Профессиональный аудит мощностей под On-premise LLM, развертывание автономных моделей и оптимизация Enterprise-сетей.</p>
@@ -379,44 +290,46 @@
                 <a href="#about" class="btn-secondary">Изучить экспертизу</a>
             </div>
         </section>
-
-        <section id="about" class="grid-three">
-            <div class="card">
-                <div class="card-num">01 / B2B</div>
-                <div class="card-title">18+ лет в Enterprise-сегменте</div>
-                <p>Глубокое понимание бизнес-процессов крупных корпораций, логистики высокотехнологичных поставок железа и управления масштабными инфраструктурными контрактами.</p>
-            </div>
-            <div class="card">
-                <div class="card-num">02 / LLM</div>
-                <div class="card-title">Автономность и приватность</div>
-                <p>Проектирование и запуск больших языковых моделей на собственных мощностях (On-premise) клиента. Полная защита данных от утечек за пределы корпоративного контура.</p>
-            </div>
-            <div class="card">
-                <div class="card-num">03 / HW</div>
-                <div class="card-title">Сетевой и аппаратный аудит</div>
-                <p>Математический расчет конфигураций GPU-кластеров, подбор серверного оборудования, оптимизация распределенной памяти и проектирование топологий сетей уровня Cisco.</p>
-            </div>
-        </section>
     </div>
 
-    <section id="problems" class="problems-section">
+    <section id="about" class="section-wrap">
         <div class="container">
-            <div class="section-header">
-                <h2>Вызовы Enterprise-рынка</h2>
-                <p>Проблемы, которые мы решаем при интеграции искусственного интеллекта в закрытые корпоративные системы.</p>
+            <div class="grid-three">
+                <div class="card">
+                    <div class="card-num">01 / B2B</div>
+                    <div class="card-title">18+ лет в Enterprise-сегменте</div>
+                    <p>Глубокое понимание бизнес-процессов крупных корпораций, логистики высокотехнологичных поставок железа и управления масштабными инфраструктурными контрактами.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">02 / LLM</div>
+                    <div class="card-title">Автономность и приватность</div>
+                    <p>Проектирование и запуск больших языковых моделей на собственных мощностях (On-premise) клиента. Полная защита данных от утечек за пределы корпоративного контура.</p>
+                </div>
+                <div class="card">
+                    <div class="card-num">03 / HW</div>
+                    <div class="card-title">Сетевой и аппаратный аудит</div>
+                    <p>Математический расчет конфигураций GPU-кластеров, подбор серверного оборудования, оптимизация распределенной памяти и проектирование топологий сетей уровня Cisco.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section id="problems" class="section-wrap problems-bg">
+        <div class="container">
+            <div class="section-label">Вызовы Enterprise-рынка</div>
+            <h2 class="section-title">Проблемы, которые мы решаем при интеграции искусственного интеллекта в закрытые корпоративные системы</h2>
             
-            <div class="problem-row">
-                <div class="problem-tag">RISK_01</div>
-                <div class="problem-text">
+            <div class="problem-item">
+                <div class="problem-index">RISK_01</div>
+                <div class="problem-content">
                     <h4>Утечка данных через коммерческие облачные API</h4>
                     <p>Передача конфиденциальной информации, клиентских баз и проприетарного кода во внешние зарубежные нейросети критически опасна и часто запрещена требованиями регуляторов ИБ.</p>
                 </div>
             </div>
             
-            <div class="problem-row">
-                <div class="problem-tag">RISK_02</div>
-                <div class="problem-text">
+            <div class="problem-item">
+                <div class="problem-index">RISK_02</div>
+                <div class="problem-content">
                     <h4>Неконтролируемые инвестиции в серверное железо</h4>
                     <p>Закупка дорогостоящих вычислительных блоков и GPU без предварительного аудита, расчета размера контекстного окна моделей и объема параметров приводит к простоям или нехватке мощностей.</p>
                 </div>
@@ -424,29 +337,30 @@
         </div>
     </section>
 
-    <section id="contact" class="contacts">
+    <section id="contact" class="section-wrap">
         <div class="container">
-            <div class="section-header">
-                <h2>Начать аудит инфраструктуры</h2>
-                <p>Переведем требования вашего бизнеса в техническое задание для разработчиков и рассчитаем аппаратный стек.</p>
-            </div>
+            <div class="section-label">Прямой канал</div>
+            <h2 class="section-title" style="margin-bottom: 24px;">Начать аудит инфраструктуры</h2>
+            <p style="color: #475569; font-size: 18px; max-width: 600px;">Переведем требования вашего бизнеса в техническое задание для разработчиков и рассчитаем необходимый аппаратный стек.</p>
             
             <div class="contact-box">
                 <div class="contact-item">
                     <span>Прямая связь (Telegram)</span>
                     <a href="https://t.me/richestman8" target="_blank">@richestman8</a>
                 </div>
-                <div class="contact-item" style="border-left: 1px solid var(--border-color); padding-left: 40px;">
+                <div class="contact-item">
                     <span>Корпоративная почта</span>
                     <a href="mailto:rich@richestmax.ru">rich@richestmax.ru</a>
                 </div>
             </div>
-            
-            <div class="footer-text">
-                © 2026 RICHESTMAX.RU | ENTERPRISE SYSTEMS ARCHITECT
-            </div>
         </div>
     </section>
+
+    <div class="container">
+        <footer>
+            © 2026 RICHESTMAX.RU | ENTERPRISE SYSTEMS ARCHITECT
+        </footer>
+    </div>
 
 </body>
 </html>
