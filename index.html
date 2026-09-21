@@ -5,33 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI & Enterprise Systems Architect | Максим Криштопа</title>
     <style>
-        /* Базовые настройки и сброс стилей */
+        /* Сброс стилей и премиальные переменные */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        
+        :root {
+            --bg-color: #030712;
+            --surface-color: #0b1329;
+            --surface-hover: #111c44;
+            --border-color: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(59, 130, 246, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+        }
+
         body { 
-            background-color: #0B0F19; 
-            color: #E2E8F0; 
+            background-color: var(--bg-color); 
+            color: var(--text-primary); 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            padding-top: 80px;
+            line-height: 1.5;
+            padding-top: 90px;
+            overflow-x: hidden;
         }
 
-        /* Контейнер */
         .container { 
-            max-width: 1100px; 
+            max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 24px; 
+            padding: 0 32px; 
         }
 
-        /* Шапка сайта */
+        /* Премиальная навигация */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 80px;
-            background-color: #0B0F19;
-            border-bottom: 1px solid #1E293B;
+            height: 90px;
+            background-color: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
         }
         .header-wrap {
@@ -41,199 +56,302 @@
             height: 100%;
         }
         .logo {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            color: #FFFFFF;
+            letter-spacing: 3px;
+            color: var(--text-primary);
             text-decoration: none;
-            font-family: "Courier New", Courier, monospace;
+            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
         }
-        .logo span { color: #3B82F6; }
+        .logo span { color: var(--accent-blue); }
         
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
         .nav-links a {
-            color: #94A3B8;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            margin-left: 32px;
-            transition: color 0.2s;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
         }
-        .nav-links a:hover { color: #FFFFFF; }
-        .nav-links a.btn-nav {
-            padding: 8px 16px;
-            background-color: rgba(59, 130, 246, 0.1);
-            color: #60A5FA;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+        .nav-links a:hover { color: var(--text-primary); }
+        
+        .btn-nav {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            color: #60a5fa !important;
+            border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 8px;
+            transition: all 0.3s ease !important;
         }
-        .nav-links a.btn-nav:hover {
-            background-color: #3B82F6;
-            color: #FFFFFF;
+        .btn-nav:hover {
+            background: var(--accent-blue) !important;
+            color: var(--text-primary) !important;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            border-color: var(--accent-blue);
         }
 
-        /* Главный экран */
+        /* Главный экран (Hero) */
         .hero {
-            padding: 100px 0 80px 0;
+            padding: 120px 0 100px 0;
             text-align: center;
             position: relative;
         }
+        .hero-glow {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-x-50%, -y-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 100%);
+            blur: 80px;
+            pointer-events: none;
+            z-index: 1;
+        }
         .badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 6px 16px;
-            background-color: rgba(59, 130, 246, 0.1);
-            color: #60A5FA;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.03);
+            color: #93c5fd;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-            font-family: "Courier New", Courier, monospace;
+            letter-spacing: 1.5px;
+            margin-bottom: 32px;
+            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+        }
+        .badge::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #4ade80;
         }
         .hero h1 {
-            font-size: 44px;
+            font-size: 56px;
             font-weight: 800;
-            color: #FFFFFF;
-            line-height: 1.2;
-            margin-bottom: 24px;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 28px;
+            letter-spacing: -1.5px;
         }
         .hero h1 span {
-            color: #3B82F6;
+            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .hero p {
-            font-size: 18px;
-            color: #94A3B8;
-            max-width: 680px;
-            margin: 0 auto 40px auto;
+            font-size: 19px;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto 48px auto;
+            font-weight: 400;
         }
         .hero-btns {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 20px;
         }
         .btn-primary {
-            padding: 14px 28px;
-            background-color: #3B82F6;
-            color: #FFFFFF;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
-            border-radius: 10px;
-            transition: background-color 0.2s;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+            transition: all 0.3s ease;
         }
-        .btn-primary:hover { background-color: #2563EB; }
-        
+        .btn-primary:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+        }
         .btn-secondary {
-            padding: 14px 28px;
-            background-color: #1E293B;
-            color: #E2E8F0;
+            padding: 16px 36px;
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
-            border-radius: 10px;
-            border: 1px solid #334155;
-            transition: background-color 0.2s;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
-        .btn-secondary:hover { background-color: #334155; }
+        .btn-secondary:hover { 
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
 
-        /* Сетка экспертизы */
+        /* Блок Экспертизы */
         .grid-three {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            padding: 60px 0;
-            border-top: 1px solid #1E293B;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            padding: 100px 0;
+            border-top: 1px solid var(--border-color);
         }
         .card {
-            background-color: #111827;
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid #1E293B;
+            background-color: var(--surface-color);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            background-color: var(--surface-hover);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.05);
         }
         .card-num {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            color: #3B82F6;
-            font-family: "Courier New", Courier, monospace;
-            margin-bottom: 8px;
+            color: var(--accent-blue);
+            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+            margin-bottom: 16px;
         }
         .card-title {
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 700;
-            text-transform: uppercase;
-            color: #FFFFFF;
-            letter-spacing: 1px;
+            color: var(--text-primary);
             margin-bottom: 16px;
+            letter-spacing: -0.3px;
         }
         .card p {
             font-size: 14px;
-            color: #94A3B8;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        /* Вызовы / Проблемы */
+        /* Вызовы Enterprise */
         .problems-section {
-            padding: 80px 0;
-            background-color: #0F172A;
-            border-top: 1px solid #1E293B;
+            padding: 100px 0;
+            background-color: #050b18;
+            border-top: 1px solid var(--border-color);
         }
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 28px;
-            color: #FFFFFF;
-            margin-bottom: 48px;
+            max-width: 600px;
+            margin: 0 auto 64px auto;
+        }
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
         }
         .problem-row {
             display: flex;
-            gap: 20px;
-            background-color: #1E293B;
-            padding: 24px;
-            border-radius: 12px;
-            border-left: 4px solid #EF4444;
-            margin-bottom: 16px;
+            align-items: flex-start;
+            gap: 24px;
+            background-color: var(--bg-color);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid #ef4444;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .problem-row:hover {
+            border-color: var(--border-glow);
+            border-left-color: #ef4444;
+            transform: translateX(4px);
         }
         .problem-tag {
-            font-family: "Courier New", Courier, monospace;
+            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
             font-weight: 700;
-            color: #EF4444;
+            color: #ef4444;
+            font-size: 16px;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
         }
-        .problem-text h4 { color: #FFFFFF; margin-bottom: 4px; font-size: 16px; }
-        .problem-text p { color: #94A3B8; font-size: 14px; }
+        .problem-text h4 { 
+            color: var(--text-primary); 
+            margin-bottom: 8px; 
+            font-size: 18px; 
+            font-weight: 600;
+        }
+        .problem-text p { 
+            color: var(--text-secondary); 
+            font-size: 15px; 
+            line-height: 1.6;
+        }
 
         /* Контакты */
         .contacts {
-            padding: 80px 0;
+            padding: 120px 0;
             text-align: center;
-            border-top: 1px solid #1E293B;
+            border-top: 1px solid var(--border-color);
+            position: relative;
         }
         .contact-box {
             display: inline-flex;
-            gap: 40px;
-            background-color: #111827;
-            padding: 24px 40px;
-            border-radius: 16px;
-            border: 1px solid #1E293B;
-            margin-top: 32px;
+            gap: 60px;
+            background-color: var(--surface-color);
+            padding: 32px 56px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            margin-top: 48px;
             text-align: left;
+            transition: all 0.3s ease;
+        }
+        .contact-box:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.03);
         }
         .contact-item span {
             display: block;
             font-size: 11px;
-            color: #64748B;
+            color: #64748b;
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 4px;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
         }
         .contact-item a {
-            color: #60A5FA;
+            color: #60a5fa;
             text-decoration: none;
-            font-weight: 500;
-            font-family: "Courier New", Courier, monospace;
+            font-weight: 600;
+            font-size: 18px;
+            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+            transition: color 0.2s ease;
         }
-        .contact-item a:hover { color: #3B82F6; }
+        .contact-item a:hover { color: var(--accent-blue); }
+        
+        .footer-text {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 12px;
+            color: #475569;
+            font-family: "SF Mono", SFMono-Regular, Consolas, monospace;
+        }
 
-        /* Адаптивность для мобильных */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 40px; }
             .nav-links { display: none; }
-            .contact-box { flex-direction: column; gap: 20px; padding: 24px; }
+            .contact-box { flex-direction: column; gap: 28px; padding: 32px; width: 100%; }
+            .hero-btns { flex-direction: column; gap: 12px; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -252,49 +370,55 @@
 
     <div class="container">
         <section class="hero">
-            <div class="badge">ON-PREMISE GENAI SYSTEMS</div>
+            <div class="hero-glow"></div>
+            <div class="badge">LOCALLY DEPLOYED AI SYSTEMS</div>
             <h1>Проектирование и аудит <br><span>локальной ИИ-инфраструктуры</span></h1>
-            <p>Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных LLM и аудит вычислительных мощностей под Enterprise-задачи.</p>
+            <p>Конвертация неопределенных требований бизнеса в строгую инженерную архитектуру. Профессиональный аудит мощностей под On-premise LLM, развертывание автономных моделей и оптимизация Enterprise-сетей.</p>
             <div class="hero-btns">
-                <a href="#contact" class="btn-primary">Обсудить задачу</a>
-                <a href="#about" class="btn-secondary">Спектр решений</a>
+                <a href="#contact" class="btn-primary">Обсудить проект</a>
+                <a href="#about" class="btn-secondary">Изучить экспертизу</a>
             </div>
         </section>
 
         <section id="about" class="grid-three">
             <div class="card">
-                <div class="card-num">18+</div>
-                <div class="card-title">Лет в B2B и поставках</div>
-                <p>Глубокое понимание архитектуры крупных сделок, построения цепочек снабжения и управления сложными инфраструктурными проектами.</p>
+                <div class="card-num">01 / B2B</div>
+                <div class="card-title">18+ лет в Enterprise-сегменте</div>
+                <p>Глубокое понимание бизнес-процессов крупных корпораций, логистики высокотехнологичных поставок железа и управления масштабными инфраструктурными контрактами.</p>
             </div>
             <div class="card">
-                <div class="card-num">On-Prem</div>
-                <div class="card-title">Фокус на приватности</div>
-                <p>Развертывание и оптимизация автономных языковых моделей (LLM) на собственном оборудовании заказчика без утечки данных во внешние облака.</p>
+                <div class="card-num">02 / LLM</div>
+                <div class="card-title">Автономность и приватность</div>
+                <p>Проектирование и запуск больших языковых моделей на собственных мощностях (On-premise) клиента. Полная защита данных от утечек за пределы корпоративного контура.</p>
             </div>
             <div class="card">
-                <div class="card-num">Hardware</div>
-                <div class="card-title">Аудит и сети</div>
-                <p>Проектирование конфигураций GPU-серверов, расчет сетевых топологий (Enterprise-уровень) и оптимизация распределенной памяти.</p>
+                <div class="card-num">03 / HW</div>
+                <div class="card-title">Сетевой и аппаратный аудит</div>
+                <p>Математический расчет конфигураций GPU-кластеров, подбор серверного оборудования, оптимизация распределенной памяти и проектирование топологий сетей уровня Cisco.</p>
             </div>
         </section>
     </div>
 
     <section id="problems" class="problems-section">
         <div class="container">
-            <h2 class="section-title">С какими вызовами сталкивается Enterprise-сегмент</h2>
+            <div class="section-header">
+                <h2>Вызовы Enterprise-рынка</h2>
+                <p>Проблемы, которые мы решаем при интеграции искусственного интеллекта в закрытые корпоративные системы.</p>
+            </div>
+            
             <div class="problem-row">
-                <div class="problem-tag">[!]</div>
+                <div class="problem-tag">RISK_01</div>
                 <div class="problem-text">
-                    <h4>Риски безопасности передачи данных во внешние API</h4>
-                    <p>Коммерческая тайна, персональные данные клиентов и закрытый код не должны покидать внутренний периметр компании.</p>
+                    <h4>Утечка данных через коммерческие облачные API</h4>
+                    <p>Передача конфиденциальной информации, клиентских баз и проприетарного кода во внешние зарубежные нейросети критически опасна и часто запрещена требованиями регуляторов ИБ.</p>
                 </div>
             </div>
+            
             <div class="problem-row">
-                <div class="problem-tag">[!]</div>
+                <div class="problem-tag">RISK_02</div>
                 <div class="problem-text">
-                    <h4>Хаос при масштабировании GPU-мощностей</h4>
-                    <p>Закупки дорогостоящего серверного железа вслепую, без четкого математического расчета объемов контекстного окна и слотов памяти под корпоративные модели.</p>
+                    <h4>Неконтролируемые инвестиции в серверное железо</h4>
+                    <p>Закупка дорогостоящих вычислительных блоков и GPU без предварительного аудита, расчета размера контекстного окна моделей и объема параметров приводит к простоям или нехватке мощностей.</p>
                 </div>
             </div>
         </div>
@@ -302,18 +426,24 @@
 
     <section id="contact" class="contacts">
         <div class="container">
-            <h2 class="section-title">Связаться для аудита</h2>
-            <p style="color: #94A3B8; max-width: 500px; margin: 0 auto;">Если вам необходимо перевести бизнес-задачи в строгий технический регламент для интеграции ИИ-решений или оценить готовность ваших серверов.</p>
+            <div class="section-header">
+                <h2>Начать аудит инфраструктуры</h2>
+                <p>Переведем требования вашего бизнеса в техническое задание для разработчиков и рассчитаем аппаратный стек.</p>
+            </div>
             
             <div class="contact-box">
                 <div class="contact-item">
-                    <span>Прямой контакт (Telegram)</span>
+                    <span>Прямая связь (Telegram)</span>
                     <a href="https://t.me/richestman8" target="_blank">@richestman8</a>
                 </div>
-                <div class="contact-item">
-                    <span>Официальный Email</span>
+                <div class="contact-item" style="border-left: 1px solid var(--border-color); padding-left: 40px;">
+                    <span>Корпоративная почта</span>
                     <a href="mailto:rich@richestmax.ru">rich@richestmax.ru</a>
                 </div>
+            </div>
+            
+            <div class="footer-text">
+                © 2026 RICHESTMAX.RU | ENTERPRISE SYSTEMS ARCHITECT
             </div>
         </div>
     </section>
