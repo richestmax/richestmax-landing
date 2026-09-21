@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI & Enterprise Systems Architect | Максим Криштопа</title>
-    <script src="https://jsdelivr.net"></script>
+    <!-- Подключаем стабильную версию Tailwind CSS v3 -->
+    <script src="https://tailwindcss.com"></script>
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B0F17; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B0F17; color: #F1F5F9; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .glow-effect:hover { box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.4); }
     </style>
 </head>
-<body class="text-slate-100 antialiased selection:bg-blue-500/30 selection:text-blue-200">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F17]/70 backdrop-blur-md border-b border-slate-800/60">
+<body class="bg-[#0B0F17] text-[#F1F5F9] antialiased selection:bg-blue-500/30 selection:text-blue-200">
+    
+    <!-- Навигация -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0F17]/80 backdrop-blur-md border-b border-slate-800/60">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="mono text-lg font-bold tracking-wider text-white">RICHEST<span class="text-blue-500">MAX</span>.RU</a>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
@@ -26,17 +29,102 @@
             </nav>
         </div>
     </header>
-    <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
+
+    <!-- Главный экран -->
+    <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-[#0B0F17]">
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.15]">Проектирование и аудит <br><span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">локальной ИИ-инфраструктуры</span></h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10">Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных On-premise GenAI-систем.</p>
+            <div class="inline-flex items-center space-x-2 bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mono mb-6 border border-blue-500/20">
+                <span>ON-PREMISE GENAI SYSTEMS</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.15]">
+                Проектирование и аудит <br>
+                <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">локальной ИИ-инфраструктуры</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных LLM и аудит вычислительных мощностей под Enterprise-задачи.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-xl shadow-lg shadow-blue-600/20 transition-all text-center">
+                    Обсудить задачу
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 bg-slate-800/50 hover:bg-slate-800 text-slate-300 font-medium rounded-xl border border-slate-700/50 transition-all text-center">
+                    Спектр решений
+                </a>
+            </div>
+        </div>
+        <!-- Размытый фоновый элемент для красоты -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    </section>
+
+    <!-- Блок Экспертизы / Профиль -->
+    <section id="about" class="py-20 border-t border-slate-900 bg-[#0E131F]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="bg-[#0B0F17] p-8 rounded-2xl border border-slate-800/80 shadow-sm">
+                    <div class="text-3xl font-bold text-blue-500 mono mb-2">18+</div>
+                    <div class="text-sm font-semibold tracking-wide text-slate-400 uppercase mb-4">Лет в B2B и поставках</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Глубокое понимание архитектуры крупных сделок, построения цепочек снабжения и управления сложными инфраструктурными проектами.</p>
+                </div>
+                <div class="bg-[#0B0F17] p-8 rounded-2xl border border-slate-800/80 shadow-sm">
+                    <div class="text-3xl font-bold text-indigo-400 mono mb-2">On-Prem</div>
+                    <div class="text-sm font-semibold tracking-wide text-slate-400 uppercase mb-4">Фокус на приватности</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Развертывание и оптимизация автономных языковых моделей (LLM) на собственном оборудовании заказчика без утечки данных в облако.</p>
+                </div>
+                <div class="bg-[#0B0F17] p-8 rounded-2xl border border-slate-800/80 shadow-sm">
+                    <div class="text-3xl font-bold text-purple-400 mono mb-2">Hardware</div>
+                    <div class="text-sm font-semibold tracking-wide text-slate-400 uppercase mb-4">Аудит и Сети</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Проектирование конфигураций GPU-серверов, расчет сетевых топологий (Cisco/Enterprise) и оптимизация распределенной памяти.</p>
+                </div>
+            </div>
         </div>
     </section>
-    <section id="contact" class="py-24 relative text-center">
+
+    <!-- Блок Вызовов / Проблематики -->
+    <section id="problems" class="py-24 bg-[#0B0F17]">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">С какими вызовами сталкивается Enterprise-сегмент</h2>
+                <p class="text-slate-400">Когда стандартные облачные подходы не применимы из-за требований безопасности или архитектурных ограничений.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="p-6 bg-[#0E131F] rounded-xl border border-slate-800/40 flex gap-4 items-start">
+                    <div class="text-red-500 font-bold mono pt-0.5">[!]</div>
+                    <div>
+                        <h4 class="text-white font-medium mb-1">Риски безопасности передачи данных во внешние API</h4>
+                        <p class="text-sm text-slate-400">Коммерческая тайна, персональные данные клиентов и закрытый код не должны покидать периметр компании.</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-[#0E131F] rounded-xl border border-slate-800/40 flex gap-4 items-start">
+                    <div class="text-red-500 font-bold mono pt-0.5">[!]</div>
+                    <div>
+                        <h4 class="text-white font-medium mb-1">Хаос при масштабировании GPU-мощностей</h4>
+                        <p class="text-sm text-slate-400">Закупки дорогостоящего серверного железа вслепую, без четкого математического расчета объемов контекстного окна и слотов памяти.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок Контактов -->
+    <section id="contact" class="py-24 bg-[#0E131F] border-t border-slate-900 text-center">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-white mb-4">Связаться с экспертом</h2>
-            <p class="text-slate-400 mb-6">Telegram: @richestman8 | Email: rich@richestmax.ru</p>
+            <h2 class="text-3xl font-bold text-white mb-4">Связаться для аудита</h2>
+            <p class="text-slate-400 mb-8 max-w-md mx-auto">Если вам необходимо перевести бизнес-задачи в строгий технический регламент для разработки или оценить готовность инфраструктуры.</p>
+            <div class="inline-flex flex-col sm:flex-row gap-6 p-6 bg-[#0B0F17] rounded-2xl border border-slate-800/60 text-left">
+                <div>
+                    <span class="text-xs font-semibold tracking-wider text-slate-500 uppercase block mb-1">Прямой контакт (Telegram)</span>
+                    <a href="https://t.me" target="_blank" class="text-blue-400 hover:text-blue-300 font-medium mono transition-colors">@richestman8</a>
+                </div>
+                <div class="sm:border-l sm:border-slate-800 sm:pl-6">
+                    <span class="text-xs font-semibold tracking-wider text-slate-500 uppercase block mb-1">Официальный Email</span>
+                    <a href="mailto:rich@richestmax.ru" class="text-indigo-400 hover:text-indigo-300 font-medium mono transition-colors">rich@richestmax.ru</a>
+                </div>
+            </div>
+            <div class="mt-12 text-xs text-slate-600 mono">
+                © 2026 RICHESTMAX.RU | Все права защищены.
+            </div>
         </div>
     </section>
+
 </body>
 </html>
