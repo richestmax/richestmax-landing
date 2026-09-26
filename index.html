@@ -54,9 +54,11 @@
     h2 { margin:7px 0 0;font-size:clamp(25px,3vw,36px);font-weight:570;letter-spacing:-.04em }
     .section-note { max-width:320px;color:#8993a8;font-size:12px }
     .cards { display:grid;grid-template-columns:repeat(3,1fr);gap:15px }
-    .glass { position:relative;overflow:hidden; padding:23px 22px 25px; min-height:210px; border-radius:20px; border:1px solid var(--stroke); background:linear-gradient(140deg,rgba(255,255,255,.075),rgba(255,255,255,.025) 55%,rgba(142,130,235,.045)); backdrop-filter:blur(22px); box-shadow:0 14px 44px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.055); transition:transform .25s,border-color .25s }
-    .glass:hover { transform:translateY(-4px);border-color:rgba(136,230,222,.28) }
-    .glass::after { content:"";position:absolute;right:-45px;top:-60px;width:145px;height:145px;border-radius:50%;background:rgba(89,214,204,.06);filter:blur(30px);pointer-events:none }
+    .glass { --mx:18%;--my:8%;--rx:0deg;--ry:0deg;position:relative;isolation:isolate;overflow:hidden;padding:23px 22px 25px;min-height:210px;border-radius:20px;border:1px solid rgba(226,245,255,.2);background:radial-gradient(ellipse at var(--mx) var(--my),rgba(255,255,255,.17),transparent 38%),linear-gradient(145deg,rgba(229,251,255,.12),rgba(117,178,202,.045) 23%,rgba(12,19,32,.42) 60%,rgba(126,111,205,.115));backdrop-filter:blur(26px) saturate(155%);-webkit-backdrop-filter:blur(26px) saturate(155%);box-shadow:0 22px 54px rgba(0,0,0,.27),0 5px 16px rgba(2,8,18,.22),inset 0 1.5px 0 rgba(255,255,255,.32),inset 1.5px 0 0 rgba(223,248,255,.12),inset -1px 0 0 rgba(113,213,223,.08),inset 0 -2px 0 rgba(0,0,0,.27),inset 0 0 38px rgba(139,190,255,.045);transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .32s cubic-bezier(.2,.75,.25,1),border-color .32s,box-shadow .32s,background .32s;will-change:transform }
+    .glass::before { content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:linear-gradient(132deg,rgba(255,255,255,.21),transparent 18%,transparent 62%,rgba(134,231,237,.07)),linear-gradient(180deg,rgba(255,255,255,.06),transparent 24%,rgba(1,5,13,.14));box-shadow:inset 0 1px 0 rgba(255,255,255,.2);opacity:.9 }
+    .glass:hover { --lift:-5px;border-color:rgba(160,245,240,.42);background:radial-gradient(ellipse at var(--mx) var(--my),rgba(255,255,255,.23),transparent 42%),linear-gradient(145deg,rgba(229,251,255,.16),rgba(117,178,202,.06) 23%,rgba(12,19,32,.39) 60%,rgba(126,111,205,.15));box-shadow:0 30px 65px rgba(0,0,0,.32),0 8px 22px rgba(3,16,30,.27),inset 0 1.5px 0 rgba(255,255,255,.4),inset 1.5px 0 0 rgba(223,248,255,.18),inset 0 -2px 0 rgba(0,0,0,.3),inset 0 0 44px rgba(139,190,255,.07);transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-5px) }
+    .glass::after { content:"";position:absolute;z-index:-2;right:-45px;top:-60px;width:145px;height:145px;border-radius:50%;background:rgba(89,214,204,.1);filter:blur(30px);pointer-events:none }
+    .glass > * { transform:translateZ(12px) }
     .icon { display:grid;place-items:center;width:37px;height:37px;margin-bottom:22px;border:1px solid rgba(115,238,226,.19);border-radius:12px;background:rgba(115,238,226,.055);color:var(--cyan);font-size:16px }
     .glass h3 { margin:0 0 9px;font-size:16px;font-weight:600;letter-spacing:-.02em }
     .glass p { max-width:290px;margin:0;color:#9aa4b8;font-size:13px;line-height:1.7 }
@@ -71,6 +73,7 @@
     .footer-mark { color:#a8b2c3;letter-spacing:.11em }
     @media(max-width:800px) { .hero { min-height:auto;grid-template-columns:1fr;gap:5px;padding:70px 0 57px }.scene { min-height:350px }.scene::before { width:290px;height:290px }.orbit { width:290px;height:290px }.orbit.two { width:235px;height:235px }.orbit.three { width:345px;height:345px }.core { width:145px;height:145px }.label-a { left:7%;top:9% }.label-b { right:4%;top:21% }.label-c { left:10%;bottom:9% }.cards { grid-template-columns:1fr 1fr }.lower { grid-template-columns:1fr 1fr } }
     @media(max-width:560px) { .wrap { width:min(100% - 32px,480px) }.topbar { height:68px }nav { gap:17px;font-size:11px }nav a:nth-child(2) { display:none }.nav-cta { padding:8px 11px }.brand { font-size:11px }.hero { padding:55px 0 48px }h1 { font-size:52px }.lead { font-size:15px }.scene { min-height:310px;margin:0 -10px }.orbit { width:255px;height:255px }.orbit.two { width:210px;height:210px }.orbit.three { width:305px;height:305px }.core { width:125px;height:125px }.label-a { left:0;top:6% }.label-b { right:0;top:17% }.label-c { left:3%;bottom:6% }.orb-label { padding:8px 10px;font-size:9px }.cards,.lower { grid-template-columns:1fr }.glass { min-height:174px;padding:20px }.icon { margin-bottom:17px }.section-head { display:block }.section-note { margin-top:9px }footer { margin-top:55px } }
+    @media(max-width:800px) { .glass > * { transform:none } }
     @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important } }
   </style>
 </head>
@@ -118,5 +121,26 @@
     </section>
   </main>
   <footer class="wrap"><span>© Максим Криштопа</span><span class="footer-mark">ON-PREMISE GENAI SYSTEMS</span><a href="#top">Наверх ↑</a></footer>
+  <script>
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.glass').forEach((card) => {
+        card.addEventListener('pointermove', (event) => {
+          const bounds = card.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width;
+          const y = (event.clientY - bounds.top) / bounds.height;
+          card.style.setProperty('--mx', `${x * 100}%`);
+          card.style.setProperty('--my', `${y * 100}%`);
+          card.style.setProperty('--rx', `${(0.5 - y) * 3}deg`);
+          card.style.setProperty('--ry', `${(x - 0.5) * 3}deg`);
+        });
+        card.addEventListener('pointerleave', () => {
+          card.style.setProperty('--mx', '18%');
+          card.style.setProperty('--my', '8%');
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
