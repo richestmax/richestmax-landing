@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080a11">
-  <meta name="description" content="Максим Криштопа — проектирование и аудит локальной ИИ-инфраструктуры, On-Premise GenAI и GPU-систем.">
+  <meta name="description" content="Максим Криштопа — проектирование и аудит локальной ИИ-инфраструктуры, On-Premise GenAI и техническое сопровождение ИИ-разработок.">
   <title>Максим Криштопа — локальная ИИ-инфраструктура</title>
   <style>
     :root { color-scheme: dark; --bg:#080a11; --ink:#f3f5fa; --muted:#a0a8bb; --cyan:#7fc8ff; --violet:#a99bff; --glass:rgba(255,255,255,.055); --stroke:rgba(211,231,255,.13); }
@@ -15,6 +15,9 @@
     body::before { width:42rem;height:42rem;top:-20rem;left:-12rem;background:#185594 }
     body::after { width:36rem;height:36rem;right:-17rem;top:18rem;background:#5545bb;opacity:.2 }
     .noise { position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.12; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E") }
+    .starfield { position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;opacity:.72;mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.78) 76%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.78) 76%,transparent 100%) }
+    .star { position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:var(--star-color);opacity:var(--base-opacity);box-shadow:0 0 var(--glow-size) var(--star-glow);animation:star-glimmer var(--twinkle-speed) ease-in-out var(--twinkle-delay) infinite alternate }
+    @keyframes star-glimmer { 0%,100% { opacity:var(--base-opacity);transform:scale(.78) } 50% { opacity:var(--peak-opacity);transform:scale(1.3) } }
     a { color:inherit; text-decoration:none }
     .wrap { width:min(1160px,calc(100% - 44px)); margin:auto }
     .topbar { height:82px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.075) }
@@ -54,6 +57,11 @@
     h2 { margin:7px 0 0;font-size:clamp(25px,3vw,36px);font-weight:570;letter-spacing:-.04em }
     .section-note { max-width:320px;color:#8993a8;font-size:12px }
     .cards { display:grid;grid-template-columns:repeat(3,1fr);gap:15px }
+    .steps { display:grid;grid-template-columns:repeat(4,1fr);gap:14px }
+    .step { min-height:235px }
+    .step-no { margin-bottom:24px;color:var(--cyan);font:600 11px ui-monospace,monospace;letter-spacing:.15em }
+    .service-intro { max-width:760px;margin:-8px 0 25px;color:#a9b1c3;font-size:15px;line-height:1.8 }
+    .service-cta { display:flex;justify-content:flex-start;margin-top:18px }
     .glass { --mx:18%;--my:8%;--rx:0deg;--ry:0deg;position:relative;isolation:isolate;overflow:hidden;padding:23px 22px 25px;min-height:210px;border-radius:20px;border:1px solid rgba(226,245,255,.2);background:radial-gradient(ellipse at var(--mx) var(--my),rgba(255,255,255,.17),transparent 38%),linear-gradient(145deg,rgba(229,251,255,.12),rgba(117,178,202,.045) 23%,rgba(12,19,32,.42) 60%,rgba(126,111,205,.115));backdrop-filter:blur(26px) saturate(155%);-webkit-backdrop-filter:blur(26px) saturate(155%);box-shadow:0 22px 54px rgba(0,0,0,.27),0 5px 16px rgba(2,8,18,.22),inset 0 1.5px 0 rgba(255,255,255,.32),inset 1.5px 0 0 rgba(223,248,255,.12),inset -1px 0 0 rgba(127,200,255,.08),inset 0 -2px 0 rgba(0,0,0,.27),inset 0 0 38px rgba(139,190,255,.045);transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .32s cubic-bezier(.2,.75,.25,1),border-color .32s,box-shadow .32s,background .32s;will-change:transform }
     .glass::before { content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:linear-gradient(132deg,rgba(255,255,255,.21),transparent 18%,transparent 62%,rgba(136,191,255,.08)),linear-gradient(180deg,rgba(255,255,255,.06),transparent 24%,rgba(1,5,13,.14));box-shadow:inset 0 1px 0 rgba(255,255,255,.2);opacity:.9 }
     .glass:hover { border-color:rgba(153,203,255,.44);background:radial-gradient(ellipse at var(--mx) var(--my),rgba(255,255,255,.23),transparent 42%),linear-gradient(145deg,rgba(229,251,255,.16),rgba(117,178,202,.06) 23%,rgba(12,19,32,.39) 60%,rgba(126,111,205,.15));box-shadow:0 30px 65px rgba(0,0,0,.32),0 8px 22px rgba(3,16,30,.27),inset 0 1.5px 0 rgba(255,255,255,.4),inset 1.5px 0 0 rgba(223,248,255,.18),inset 0 -2px 0 rgba(0,0,0,.3),inset 0 0 44px rgba(139,190,255,.07);transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-5px) }
@@ -71,17 +79,18 @@
     .contact-card .icon { border-color:rgba(169,155,255,.26);color:#beb4ff;background:rgba(169,155,255,.08) }
     footer { margin-top:82px;padding:22px 0 30px;border-top:1px solid rgba(255,255,255,.075);display:flex;justify-content:space-between;gap:20px;color:#737d91;font-size:11px }
     .footer-mark { color:#a8b2c3;letter-spacing:.11em }
-    @media(max-width:800px) { .hero { min-height:auto;grid-template-columns:1fr;gap:5px;padding:70px 0 57px }.scene { min-height:350px }.scene::before { width:290px;height:290px }.orbit { width:290px;height:290px }.orbit.two { width:235px;height:235px }.orbit.three { width:345px;height:345px }.core { width:145px;height:145px }.label-a { left:7%;top:9% }.label-b { right:4%;top:21% }.label-c { left:10%;bottom:9% }.cards { grid-template-columns:1fr 1fr }.lower { grid-template-columns:1fr 1fr } }
-    @media(max-width:560px) { .wrap { width:min(100% - 32px,480px) }.topbar { height:68px }nav { gap:17px;font-size:11px }nav a:nth-child(2) { display:none }.nav-cta { padding:8px 11px }.brand { font-size:11px }.hero { padding:55px 0 48px }h1 { font-size:52px }.lead { font-size:15px }.scene { min-height:310px;margin:0 -10px }.orbit { width:255px;height:255px }.orbit.two { width:210px;height:210px }.orbit.three { width:305px;height:305px }.core { width:125px;height:125px }.label-a { left:0;top:6% }.label-b { right:0;top:17% }.label-c { left:3%;bottom:6% }.orb-label { padding:8px 10px;font-size:9px }.cards,.lower { grid-template-columns:1fr }.glass { min-height:174px;padding:20px }.icon { margin-bottom:17px }.section-head { display:block }.section-note { margin-top:9px }footer { margin-top:55px } }
+    @media(max-width:800px) { .hero { min-height:auto;grid-template-columns:1fr;gap:5px;padding:70px 0 57px }.scene { min-height:350px }.scene::before { width:290px;height:290px }.orbit { width:290px;height:290px }.orbit.two { width:235px;height:235px }.orbit.three { width:345px;height:345px }.core { width:145px;height:145px }.label-a { left:7%;top:9% }.label-b { right:4%;top:21% }.label-c { left:10%;bottom:9% }.cards,.steps { grid-template-columns:1fr 1fr }.lower { grid-template-columns:1fr 1fr } }
+    @media(max-width:560px) { .wrap { width:min(100% - 32px,480px) }.topbar { height:68px }nav { gap:17px;font-size:11px }nav a:nth-child(2) { display:none }.nav-cta { padding:8px 11px }.brand { font-size:11px }.hero { padding:55px 0 48px }h1 { font-size:52px }.lead { font-size:15px }.scene { min-height:310px;margin:0 -10px }.orbit { width:255px;height:255px }.orbit.two { width:210px;height:210px }.orbit.three { width:305px;height:305px }.core { width:125px;height:125px }.label-a { left:0;top:6% }.label-b { right:0;top:17% }.label-c { left:3%;bottom:6% }.orb-label { padding:8px 10px;font-size:9px }.cards,.steps,.lower { grid-template-columns:1fr }.glass { min-height:174px;padding:20px }.step { min-height:190px }.icon { margin-bottom:17px }.section-head { display:block }.section-note { margin-top:9px }footer { margin-top:55px } }
     @media(max-width:800px) { .glass > * { transform:none } }
     @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important } }
   </style>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
+  <div class="starfield" data-count="2500" aria-hidden="true"></div>
   <header class="wrap topbar">
     <a class="brand" href="#top" aria-label="Richestmax — наверх"><span class="brand-mark">R</span><span>RICHESTMAX.RU</span></a>
-    <nav aria-label="Основная навигация"><a href="#about">Профиль</a><a href="#problems">Вызовы</a><a class="nav-cta" href="#contact">Связаться <span class="arrow">↗</span></a></nav>
+    <nav aria-label="Основная навигация"><a href="#about">Профиль</a><a href="#problems">Вызовы</a><a href="#promotion">Разработки</a><a class="nav-cta" href="#contact">Связаться <span class="arrow">↗</span></a></nav>
   </header>
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
@@ -105,6 +114,17 @@
         <article class="glass"><div class="icon" aria-hidden="true">⌘</div><h3>Аудит оборудования и сетей</h3><p>Проектирование конфигураций GPU-серверов, расчет сетевых топологий Enterprise-уровня и оптимизация распределенной памяти.</p></article>
       </div>
     </section>
+    <section id="promotion" aria-labelledby="promotion-title" style="margin-top:78px">
+      <div class="section-head"><div><div class="section-kicker">Продвижение разработок</div><h2 id="promotion-title">От сильной технологии — к понятному решению для бизнеса</h2></div><p class="section-note">Техническая экспертиза и подготовка к диалогу с корпоративными заказчиками.</p></div>
+      <p class="service-intro">Помогаю разработчикам и технологическим командам подготовить ИИ- и IT-решение к выходу на корпоративный рынок: определить подходящие сценарии применения, сформулировать ценность для заказчика и спланировать первый пилот.</p>
+      <div class="steps">
+        <article class="glass step"><div class="step-no">ШАГ 01</div><h3>Разбираем разработку</h3><p>Уточняем назначение, зрелость, архитектуру, интеграционные ограничения и требования к эксплуатации.</p></article>
+        <article class="glass step"><div class="step-no">ШАГ 02</div><h3>Находим рыночный сценарий</h3><p>Определяем отрасли, типы заказчиков и задачи, где продукт может принести измеримую пользу.</p></article>
+        <article class="glass step"><div class="step-no">ШАГ 03</div><h3>Готовим предложение и пилот</h3><p>Собираем техническое позиционирование, сценарий демонстрации и план проверки решения на задаче заказчика.</p></article>
+        <article class="glass step"><div class="step-no">ШАГ 04</div><h3>Сопровождаем технический диалог</h3><p>Помогаю уточнить требования, обсудить архитектуру, оценить готовность к пилоту и согласовать следующие шаги.</p></article>
+      </div>
+      <div class="service-cta"><a class="button primary" href="#contact">Обсудить продвижение разработки <span class="arrow">↘</span></a></div>
+    </section>
     <section id="problems" aria-labelledby="problems-title" style="margin-top:78px">
       <div class="section-head"><div><div class="section-kicker">Enterprise</div><h2 id="problems-title">С какими вызовами сталкивается Enterprise-сегмент</h2></div><p class="section-note">Практический фокус — безопасность данных и точный расчет инфраструктуры.</p></div>
       <div class="cards" style="grid-template-columns:repeat(2,1fr)">
@@ -113,7 +133,7 @@
       </div>
     </section>
     <section id="contact" aria-labelledby="contact-title" style="margin-top:78px">
-      <div class="section-head"><div><div class="section-kicker">Прямой контакт</div><h2 id="contact-title">Связаться для аудита</h2></div><p class="section-note">Если нужно перевести бизнес-задачи в технический регламент или оценить готовность серверов.</p></div>
+      <div class="section-head"><div><div class="section-kicker">Прямой контакт</div><h2 id="contact-title">Обсудить задачу</h2></div><p class="section-note">Для аудита ИИ-инфраструктуры, оценки разработки или подготовки пилота.</p></div>
       <div class="cards" style="grid-template-columns:repeat(2,1fr)">
         <article class="glass contact-card"><div><div class="icon" aria-hidden="true">↗</div><h3>Telegram</h3><p>Напишите напрямую, чтобы обсудить задачу и договориться о следующем шаге.</p></div><a class="text-link" href="https://t.me/richestman8" target="_blank" rel="noreferrer">@richestman8 <span class="arrow">↗</span></a></article>
         <article class="glass contact-card"><div><div class="icon" aria-hidden="true">✉</div><h3>Официальный email</h3><p>Для запросов по аудиту и проектированию локальной ИИ-инфраструктуры.</p></div><a class="text-link" href="mailto:rich@richestmax.ru">rich@richestmax.ru <span class="arrow">↗</span></a></article>
@@ -122,6 +142,32 @@
   </main>
   <footer class="wrap"><span>© Максим Криштопа</span><span class="footer-mark">ON-PREMISE GENAI SYSTEMS</span><a href="#top">Наверх ↑</a></footer>
   <script>
+    const starfield = document.querySelector('.starfield');
+    const starCount = Number(starfield.dataset.count) || 72;
+    let starSeed = 48271;
+    const randomStarValue = () => {
+      starSeed = (starSeed * 16807) % 2147483647;
+      return (starSeed - 1) / 2147483646;
+    };
+    for (let index = 0; index < starCount; index += 1) {
+      const star = document.createElement('i');
+      const isBright = randomStarValue() > 0.86;
+      const isBlue = randomStarValue() > 0.72;
+      const baseOpacity = isBright ? 0.48 + randomStarValue() * 0.2 : 0.22 + randomStarValue() * 0.28;
+      star.className = 'star';
+      star.style.left = `${randomStarValue() * 100}%`;
+      star.style.top = `${randomStarValue() * 100}%`;
+      star.style.setProperty('--size', `${isBright ? 1.5 + randomStarValue() * 0.6 : 0.7 + randomStarValue() * 0.8}px`);
+      star.style.setProperty('--star-color', isBlue ? '#a9d5ff' : '#e4eeff');
+      star.style.setProperty('--star-glow', isBlue ? 'rgba(110,177,255,.8)' : 'rgba(210,229,255,.65)');
+      star.style.setProperty('--glow-size', isBright ? '6px' : '3px');
+      star.style.setProperty('--base-opacity', baseOpacity.toFixed(2));
+      star.style.setProperty('--peak-opacity', Math.min(baseOpacity + (isBright ? 0.3 : 0.22), 0.92).toFixed(2));
+      star.style.setProperty('--twinkle-speed', `${5 + randomStarValue() * 8}s`);
+      star.style.setProperty('--twinkle-delay', `${-randomStarValue() * 12}s`);
+      starfield.append(star);
+    }
+
     if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.glass').forEach((card) => {
         card.addEventListener('pointermove', (event) => {
