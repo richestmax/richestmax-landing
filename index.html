@@ -83,6 +83,55 @@
     @media(max-width:560px) { .wrap { width:min(100% - 32px,480px) }.topbar { height:68px }nav { gap:17px;font-size:11px }nav a:nth-child(2) { display:none }.nav-cta { padding:8px 11px }.brand { font-size:11px }.hero { padding:55px 0 48px }h1 { font-size:52px }.lead { font-size:15px }.scene { min-height:310px;margin:0 -10px }.orbit { width:255px;height:255px }.orbit.two { width:210px;height:210px }.orbit.three { width:305px;height:305px }.core { width:125px;height:125px }.label-a { left:0;top:6% }.label-b { right:0;top:17% }.label-c { left:3%;bottom:6% }.orb-label { padding:8px 10px;font-size:9px }.cards,.steps,.lower { grid-template-columns:1fr }.glass { min-height:174px;padding:20px }.step { min-height:190px }.icon { margin-bottom:17px }.section-head { display:block }.section-note { margin-top:9px }footer { margin-top:55px } }
     @media(max-width:800px) { .glass > * { transform:none } }
     @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important } }
+    /* Тонкий шампань-золотой отблеск добавляет тепла холодному стеклу. */
+    .glass { border-color:rgba(255,198,111,.78);box-shadow:0 22px 54px rgba(0,0,0,.27),0 5px 16px rgba(2,8,18,.22),0 0 24px rgba(244,179,73,.3),inset 0 1.5px 0 rgba(255,255,255,.32),inset 1.5px 0 0 rgba(223,248,255,.12),inset -1px 0 0 rgba(127,200,255,.08),inset 0 -2px 0 rgba(0,0,0,.27),inset 0 0 0 1px rgba(255,198,111,.3) }
+    .glass::before { background:linear-gradient(132deg,rgba(255,255,255,.21),transparent 18%,transparent 62%,rgba(136,191,255,.08)),linear-gradient(180deg,rgba(255,255,255,.06),transparent 24%,rgba(1,5,13,.14));box-shadow:inset 0 1px 0 rgba(255,255,255,.2) }
+    .glass::after { background:rgba(74,151,255,.12) }
+    .glass:hover { border-color:rgba(255,226,174,1);box-shadow:0 30px 65px rgba(0,0,0,.32),0 8px 22px rgba(3,16,30,.27),0 0 48px rgba(255,181,66,.78),0 0 82px rgba(255,166,52,.25),inset 0 1.5px 0 rgba(255,255,255,.4),inset 1.5px 0 0 rgba(223,248,255,.18),inset 0 -2px 0 rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,224,160,.85) }
+    .scene--art { min-height:430px }
+    .scene-visual { position:absolute;inset:14px;z-index:0;overflow:hidden;border:1px solid rgba(190,221,255,.32);border-radius:28px;background:#0c1422;box-shadow:0 25px 70px rgba(0,0,0,.4),0 0 36px rgba(93,161,255,.17) }
+    .scene-visual img { display:block;width:100%;height:100%;object-fit:cover;object-position:54% center;filter:saturate(.9) contrast(1.02) }
+    .scene-visual::after { content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(4,8,16,.5)),linear-gradient(90deg,rgba(5,9,16,.1),transparent 42%);pointer-events:none }
+    .scene-hud { position:absolute;right:4%;bottom:8%;z-index:2;display:flex;align-items:center;gap:11px;width:max-content;min-height:0;padding:12px 15px;border-radius:15px }
+    .scene-hud > span:last-child { display:grid;gap:3px }
+    .scene-hud small { color:#aab5c9;font-size:9px;letter-spacing:.13em }
+    .scene-hud strong { color:#f0f4fa;font-size:10px;font-weight:650;letter-spacing:.06em }
+    .scene-hud-light { width:8px;height:8px;border-radius:50%;background:#f0c77e;box-shadow:0 0 12px 3px rgba(240,199,126,.55) }
+    .future-window { position:relative;min-height:410px;margin:0 0 78px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;isolation:isolate;border:1px solid rgba(199,223,255,.25);border-radius:30px;background:#0b1320;box-shadow:0 28px 76px rgba(0,0,0,.34),0 0 38px rgba(97,149,232,.12) }
+    .future-window-image { position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.88) brightness(.85) }
+    .future-window::before { content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,9,17,.04) 0%,rgba(5,9,17,.08) 36%,rgba(5,9,17,.68) 100%),linear-gradient(0deg,rgba(5,9,17,.34),transparent 48%);pointer-events:none }
+    .window-content { grid-column:2;position:relative;width:min(calc(100% - 56px),470px);justify-self:end;margin-right:32px }
+    .window-content .section-kicker { color:#b3d6ff }
+    .window-content h2 { max-width:430px;margin:9px 0 10px;font-size:clamp(27px,3vw,38px);line-height:1.1 }
+    .window-content > p { max-width:410px;margin:0;color:#d3d9e5;font-size:14px;line-height:1.7;text-shadow:0 2px 18px rgba(0,0,0,.4) }
+    .window-console.glass { min-height:0;margin-top:20px;padding:12px 14px;border-radius:17px;display:grid;grid-template-columns:54px 1fr;column-gap:12px;row-gap:6px;align-items:center }
+    .window-console > img { grid-column:1;grid-row:1 / span 2;width:54px;height:54px;object-fit:cover;object-position:center;border:1px solid rgba(255,205,126,.72);border-radius:14px;box-shadow:0 0 18px rgba(255,182,76,.24) }
+    .window-console-info { grid-column:2;display:grid;gap:3px }
+    .window-console-info small { color:#aab5c8;font-size:8px;letter-spacing:.12em }
+    .window-console-info strong { color:#f2f5fb;font-size:12px;font-weight:620 }
+    .window-console-data { grid-column:2;display:flex;align-items:center;gap:8px;color:#9dcaff;font:600 8px ui-monospace,monospace;letter-spacing:.08em }
+    .window-console-data i { width:3px;height:3px;border-radius:50%;background:#e4bd7b;box-shadow:0 0 6px rgba(228,189,123,.55) }
+    @media(max-width:800px) {
+      .scene--art { min-height:350px }
+      .scene-visual { inset:9px 20px }
+      .future-window { min-height:500px;grid-template-columns:1fr;margin-bottom:60px }
+      .future-window-image { object-position:34% center }
+      .future-window::before { background:linear-gradient(0deg,rgba(5,9,17,.8) 0%,rgba(5,9,17,.44) 56%,rgba(5,9,17,.08) 100%) }
+      .window-content { grid-column:1;align-self:end;justify-self:center;width:calc(100% - 32px);margin:0 16px 18px }
+    }
+    @media(max-width:560px) {
+      .scene--art { min-height:310px;margin:0 -10px }
+      .scene-visual { inset:10px 14px }
+      .scene-hud { left:9%;right:9%;bottom:5%;width:auto;padding:10px 12px }
+      .scene-hud strong { font-size:9px }
+      .future-window { min-height:490px;border-radius:23px }
+      .window-content { width:calc(100% - 24px);margin:0 12px 12px }
+      .window-content h2 { font-size:29px }
+      .window-content > p { font-size:13px }
+      .window-console.glass { margin-top:14px;padding:10px 11px }
+    }
+    #about .cards .glass { text-align:center }
+    #about .cards .icon { margin-left:auto;margin-right:auto }
   </style>
 </head>
 <body>
@@ -100,10 +149,22 @@
         <p class="lead">Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных LLM и аудит вычислительных мощностей под Enterprise-задачи.</p>
         <div class="hero-actions"><a class="button primary" href="#contact">Обсудить задачу <span class="arrow">↗</span></a><a class="button" href="#about">Спектр решений <span class="arrow">↘</span></a></div>
       </div>
-      <div class="scene" aria-label="Абстрактная стеклянная схема локальной ИИ-инфраструктуры">
-        <div class="orbit"></div><div class="orbit two"></div><div class="orbit three"></div>
-        <div class="core"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 8 50 18v21L32 52 14 41V18L32 8Z" stroke="currentColor" stroke-width="1.2"/><path d="m32 8 0 44M14 18l36 21M50 18 14 41M14 18h36M14 41h36M32 8 14 41m18-33 18 33" stroke="currentColor" stroke-width=".75" opacity=".75"/><circle cx="32" cy="8" r="2.2" fill="currentColor"/><circle cx="14" cy="18" r="2.2" fill="currentColor"/><circle cx="50" cy="18" r="2.2" fill="currentColor"/><circle cx="32" cy="29.5" r="2.8" fill="currentColor"/><circle cx="14" cy="41" r="2.2" fill="currentColor"/><circle cx="50" cy="41" r="2.2" fill="currentColor"/><circle cx="32" cy="52" r="2.2" fill="currentColor"/></svg></div>
-        <div class="orb-label label-a"><b>01</b> &nbsp; ON-PREMISE</div><div class="orb-label label-b"><b>02</b> &nbsp; LLM</div><div class="orb-label label-c"><b>03</b> &nbsp; GPU SYSTEMS</div><i class="spark s1"></i><i class="spark s2"></i>
+      <div class="scene scene--art" aria-label="Футуристический персонаж с голографическим интерфейсом">
+        <div class="scene-visual"><img src="assets/concept-2334.webp" alt="Футуристическая женщина держит светящуюся голограмму" fetchpriority="high"></div>
+        <div class="scene-hud glass"><span class="scene-hud-light"></span><span><small>ЛОКАЛЬНАЯ ИИ-СРЕДА</small><strong>ON-PREMISE · GPU · LLM</strong></span></div>
+      </div>
+    </section>
+    <section class="future-window" aria-labelledby="future-window-title">
+      <img class="future-window-image" src="assets/hero-smart-city.png" alt="Футуристический город и космический горизонт за панорамным окном" loading="lazy" decoding="async">
+      <div class="window-content">
+        <div class="section-kicker">СИСТЕМЫ БУДУЩЕГО</div>
+        <h2 id="future-window-title">Технологии в естественной среде</h2>
+        <p>Закрытые модели, вычислительная мощность и интерфейсы — внутри единого цифрового контура.</p>
+        <div class="window-console glass">
+          <img src="assets/concept-2337.webp" alt="Футуристический образ искусственного интеллекта" loading="lazy" decoding="async">
+          <div class="window-console-info"><small>ТЕХНОЛОГИЧЕСКАЯ СРЕДА</small><strong>ИИ и инфраструктура</strong></div>
+          <div class="window-console-data"><span>GPU</span><i></i><span>LLM</span><i></i><span>PRIVATE</span></div>
+        </div>
       </div>
     </section>
     <section id="about" aria-labelledby="about-title">
