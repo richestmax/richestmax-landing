@@ -88,11 +88,22 @@
     .glass::before { background:linear-gradient(132deg,rgba(255,255,255,.21),transparent 18%,transparent 62%,rgba(136,191,255,.08)),linear-gradient(180deg,rgba(255,255,255,.06),transparent 24%,rgba(1,5,13,.14));box-shadow:inset 0 1px 0 rgba(255,255,255,.2) }
     .glass::after { background:rgba(74,151,255,.12) }
     .glass:hover { border-color:rgba(255,226,174,1);box-shadow:0 30px 65px rgba(0,0,0,.32),0 8px 22px rgba(3,16,30,.27),0 0 48px rgba(255,181,66,.78),0 0 82px rgba(255,166,52,.25),inset 0 1.5px 0 rgba(255,255,255,.4),inset 1.5px 0 0 rgba(223,248,255,.18),inset 0 -2px 0 rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,224,160,.85) }
-    .scene--art { min-height:430px }
-    .scene-visual { position:absolute;inset:14px;z-index:0;overflow:hidden;border:1px solid rgba(190,221,255,.32);border-radius:28px;background:#0c1422;box-shadow:0 25px 70px rgba(0,0,0,.4),0 0 36px rgba(93,161,255,.17) }
-    .scene-visual img { display:block;width:100%;height:100%;object-fit:cover;object-position:54% center;filter:saturate(.9) contrast(1.02) }
-    .scene-visual::after { content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(4,8,16,.5)),linear-gradient(90deg,rgba(5,9,16,.1),transparent 42%);pointer-events:none }
-    .scene-hud { position:absolute;right:4%;bottom:8%;z-index:2;display:flex;align-items:center;gap:11px;width:max-content;min-height:0;padding:12px 15px;border-radius:15px }
+    .scene--art { min-height:480px;overflow:visible }
+    .scene-visual { position:absolute;inset:0;z-index:1;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;pointer-events:none }
+    .scene-visual img { position:absolute;left:-9%;bottom:-2%;display:block;width:130%;max-width:none;height:auto;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 15px 24px rgba(0,0,0,.2)) }
+    .scene-visual::after { content:none }
+    .hero-planet { position:absolute;left:88%;top:70%;z-index:3;width:clamp(94px,10vw,138px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 18px rgba(69,174,255,.45)) }
+    .planet-halo { position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(69,174,255,.26),rgba(255,186,89,.1) 38%,transparent 70%);filter:blur(12px);animation:planet-pulse 4.5s ease-in-out infinite }
+    .earth-globe { position:absolute;inset:0;overflow:hidden;border:1px solid rgba(186,235,255,.8);border-radius:50%;background:radial-gradient(circle at 33% 27%,#9ef8ff 0,#48c5ed 12%,#1678bd 40%,#0b3d78 72%,#03152e 100%);box-shadow:inset -12px -8px 22px rgba(0,4,18,.72),inset 8px 5px 16px rgba(255,255,255,.25),0 0 24px rgba(53,174,255,.56),0 0 48px rgba(53,174,255,.24) }
+    .earth-globe::after { content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(112deg,rgba(255,255,255,.38),transparent 34%,transparent 68%,rgba(0,5,25,.56));pointer-events:none }
+    .earth-map { position:absolute;left:0;top:0;width:400%;height:100%;fill:#76e0bd;opacity:.83;filter:drop-shadow(0 0 4px rgba(93,255,207,.6));animation:earth-turn 13s linear infinite }
+    .earth-orbit { position:absolute;inset:-15% -15%;border:1px solid rgba(255,219,151,.88);border-radius:50%;transform:rotate(-21deg) scaleY(.48);box-shadow:0 0 9px rgba(255,192,106,.34);animation:earth-ring 8s linear infinite }
+    .earth-orbit::after { content:"";position:absolute;right:10%;top:11%;width:6px;height:6px;border-radius:50%;background:#fff1ce;box-shadow:0 0 8px 3px rgba(255,200,111,.9) }
+    .earth-orbit.two { inset:-24% -8%;border-color:rgba(142,214,255,.58);transform:rotate(38deg) scaleY(.54);animation-duration:11s;animation-direction:reverse }
+    @keyframes earth-turn { to { transform:translateX(-50%) } }
+    @keyframes earth-ring { to { rotate:360deg } }
+    @keyframes planet-pulse { 0%,100% { opacity:.7;transform:scale(.94) } 50% { opacity:1;transform:scale(1.08) } }
+    .scene-hud { position:absolute;left:4%;bottom:8%;z-index:2;display:flex;align-items:center;gap:11px;width:max-content;min-height:0;padding:12px 15px;border-radius:15px }
     .scene-hud > span:last-child { display:grid;gap:3px }
     .scene-hud small { color:#aab5c9;font-size:9px;letter-spacing:.13em }
     .scene-hud strong { color:#f0f4fa;font-size:10px;font-weight:650;letter-spacing:.06em }
@@ -101,7 +112,10 @@
     .future-window-image { position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.88) brightness(.85) }
     .future-window::before { content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,9,17,.04) 0%,rgba(5,9,17,.08) 36%,rgba(5,9,17,.68) 100%),linear-gradient(0deg,rgba(5,9,17,.34),transparent 48%);pointer-events:none }
     .window-content { grid-column:2;position:relative;width:min(calc(100% - 56px),470px);justify-self:end;margin-right:32px }
-    .window-content .section-kicker { color:#b3d6ff }
+    .window-content .section-kicker { display:inline-block;position:relative;padding-bottom:9px;color:#ffe1ad;font-size:13px;letter-spacing:.2em;text-shadow:0 0 8px rgba(255,209,137,.58),0 0 18px rgba(255,179,87,.3),0 0 24px rgba(105,191,255,.18) }
+    .window-content .section-kicker::before { content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:linear-gradient(90deg,rgba(255,198,111,.2),rgba(127,200,255,.32),rgba(255,198,111,.2));box-shadow:0 0 6px rgba(255,198,111,.3) }
+    .window-content .section-kicker::after { content:"";position:absolute;left:-5%;bottom:0;width:22%;height:2px;border-radius:99px;background:linear-gradient(90deg,transparent,#ffe5b0 44%,#fff 55%,transparent);box-shadow:0 0 8px rgba(255,196,107,.95),0 0 16px rgba(255,186,91,.7);animation:kicker-led-run 3.4s ease-in-out infinite }
+    @keyframes kicker-led-run { 0% { left:-5%;opacity:0 } 20% { opacity:1 } 80% { opacity:1 } 100% { left:83%;opacity:0 } }
     .window-content h2 { max-width:430px;margin:9px 0 10px;font-size:clamp(27px,3vw,38px);line-height:1.1 }
     .window-content > p { max-width:410px;margin:0;color:#d3d9e5;font-size:14px;line-height:1.7;text-shadow:0 2px 18px rgba(0,0,0,.4) }
     .window-console.glass { min-height:0;margin-top:20px;padding:12px 14px;border-radius:17px;display:grid;grid-template-columns:54px 1fr;column-gap:12px;row-gap:6px;align-items:center }
@@ -112,17 +126,21 @@
     .window-console-data { grid-column:2;display:flex;align-items:center;gap:8px;color:#9dcaff;font:600 8px ui-monospace,monospace;letter-spacing:.08em }
     .window-console-data i { width:3px;height:3px;border-radius:50%;background:#e4bd7b;box-shadow:0 0 6px rgba(228,189,123,.55) }
     @media(max-width:800px) {
-      .scene--art { min-height:350px }
-      .scene-visual { inset:9px 20px }
+      .scene--art { min-height:430px }
+      .scene-visual { inset:0 }
+      .scene-visual img { left:0;bottom:0;width:100% }
+      .hero-planet { left:74%;top:70%;width:clamp(88px,12vw,118px) }
       .future-window { min-height:500px;grid-template-columns:1fr;margin-bottom:60px }
       .future-window-image { object-position:34% center }
       .future-window::before { background:linear-gradient(0deg,rgba(5,9,17,.8) 0%,rgba(5,9,17,.44) 56%,rgba(5,9,17,.08) 100%) }
       .window-content { grid-column:1;align-self:end;justify-self:center;width:calc(100% - 32px);margin:0 16px 18px }
     }
     @media(max-width:560px) {
-      .scene--art { min-height:310px;margin:0 -10px }
-      .scene-visual { inset:10px 14px }
-      .scene-hud { left:9%;right:9%;bottom:5%;width:auto;padding:10px 12px }
+      .scene--art { min-height:400px;margin:0 -10px }
+      .scene-visual { inset:0 }
+      .scene-visual img { left:-23%;bottom:0;width:145% }
+      .hero-planet { left:84%;top:75%;width:88px }
+      .scene-hud { left:4%;right:auto;bottom:5%;width:max-content;padding:10px 12px }
       .scene-hud strong { font-size:9px }
       .future-window { min-height:490px;border-radius:23px }
       .window-content { width:calc(100% - 24px);margin:0 12px 12px }
@@ -131,7 +149,8 @@
       .window-console.glass { margin-top:14px;padding:10px 11px }
     }
     #about .cards .glass { text-align:center }
-    #about .cards .icon { margin-left:auto;margin-right:auto }
+    #about .cards .icon { margin-left:0;margin-right:auto }
+    #about .cards .glass p { margin-inline:auto;text-align:justify;text-align-last:left }
   </style>
 </head>
 <body>
@@ -149,9 +168,13 @@
         <p class="lead">Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных LLM и аудит вычислительных мощностей под Enterprise-задачи.</p>
         <div class="hero-actions"><a class="button primary" href="#contact">Обсудить задачу <span class="arrow">↗</span></a><a class="button" href="#about">Спектр решений <span class="arrow">↘</span></a></div>
       </div>
-      <div class="scene scene--art" aria-label="Футуристический персонаж с голографическим интерфейсом">
-        <div class="scene-visual"><img src="assets/concept-2334.webp" alt="Футуристическая женщина держит светящуюся голограмму" fetchpriority="high"></div>
-        <div class="scene-hud glass"><span class="scene-hud-light"></span><span><small>ЛОКАЛЬНАЯ ИИ-СРЕДА</small><strong>ON-PREMISE · GPU · LLM</strong></span></div>
+      <div class="scene scene--art" aria-label="Футуристическая девушка держит в ладони вращающуюся голограмму Земли">
+        <div class="scene-visual"><img src="assets/hero-palm.png" alt="" fetchpriority="high"></div>
+        <div class="hero-planet" aria-hidden="true">
+          <div class="planet-halo"></div>
+          <div class="earth-globe"><svg class="earth-map" viewBox="0 0 720 180"><g><path d="M22 28 39 21 57 24 69 32 84 35 90 47 80 56 85 67 73 75 68 91 55 87 48 72 36 68 32 53 24 50Z M73 82 88 77 99 85 101 97 94 108 98 121 90 139 84 158 76 147 75 128 69 113 72 98Z M145 35 159 28 174 31 183 40 174 47 163 44 156 52 146 47Z M155 53 174 50 186 62 182 80 173 101 164 117 154 100 150 81 148 65Z M180 39 198 25 222 27 241 34 260 32 281 42 292 55 279 65 263 60 250 73 235 64 218 68 205 59 191 63 183 50Z M204 67 217 70 221 82 216 96 209 103 204 91 198 79Z M270 95 286 91 301 99 297 111 282 116 270 107Z"/><path transform="translate(360 0)" d="M22 28 39 21 57 24 69 32 84 35 90 47 80 56 85 67 73 75 68 91 55 87 48 72 36 68 32 53 24 50Z M73 82 88 77 99 85 101 97 94 108 98 121 90 139 84 158 76 147 75 128 69 113 72 98Z M145 35 159 28 174 31 183 40 174 47 163 44 156 52 146 47Z M155 53 174 50 186 62 182 80 173 101 164 117 154 100 150 81 148 65Z M180 39 198 25 222 27 241 34 260 32 281 42 292 55 279 65 263 60 250 73 235 64 218 68 205 59 191 63 183 50Z M204 67 217 70 221 82 216 96 209 103 204 91 198 79Z M270 95 286 91 301 99 297 111 282 116 270 107Z"/></g></svg></div>
+          <div class="earth-orbit"></div><div class="earth-orbit two"></div>
+        </div>
       </div>
     </section>
     <section class="future-window" aria-labelledby="future-window-title">
