@@ -89,10 +89,8 @@
     .glass::after { background:rgba(74,151,255,.12) }
     .glass:hover { border-color:rgba(255,226,174,1);box-shadow:0 30px 65px rgba(0,0,0,.32),0 8px 22px rgba(3,16,30,.27),0 0 48px rgba(255,181,66,.78),0 0 82px rgba(255,166,52,.25),inset 0 1.5px 0 rgba(255,255,255,.4),inset 1.5px 0 0 rgba(223,248,255,.18),inset 0 -2px 0 rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,224,160,.85) }
     .scene--art { min-height:480px;overflow:visible }
-    .scene-visual { position:absolute;inset:0;z-index:1;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;pointer-events:none }
-    .scene-visual img { position:absolute;left:-9%;bottom:-2%;display:block;width:130%;max-width:none;height:auto;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 15px 24px rgba(0,0,0,.2)) }
-    .scene-visual::after { content:none }
-    .hero-planet { position:absolute;left:88%;top:70%;z-index:3;width:clamp(94px,10vw,138px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 18px rgba(69,174,255,.45)) }
+    .scene--art::before { width:430px;height:430px;background:radial-gradient(circle,rgba(82,158,249,.2),rgba(108,92,205,.09) 42%,transparent 72%) }
+    .hero-planet { position:absolute;left:50%;top:50%;z-index:3;width:clamp(184px,20vw,260px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 24px rgba(69,174,255,.52)) }
     .planet-halo { position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(69,174,255,.26),rgba(255,186,89,.1) 38%,transparent 70%);filter:blur(12px);animation:planet-pulse 4.5s ease-in-out infinite }
     .earth-globe { position:absolute;inset:0;overflow:hidden;border:1px solid rgba(186,235,255,.8);border-radius:50%;background:radial-gradient(circle at 33% 27%,#9ef8ff 0,#48c5ed 12%,#1678bd 40%,#0b3d78 72%,#03152e 100%);box-shadow:inset -12px -8px 22px rgba(0,4,18,.72),inset 8px 5px 16px rgba(255,255,255,.25),0 0 24px rgba(53,174,255,.56),0 0 48px rgba(53,174,255,.24) }
     .earth-globe::after { content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(112deg,rgba(255,255,255,.38),transparent 34%,transparent 68%,rgba(0,5,25,.56));pointer-events:none }
@@ -127,19 +125,17 @@
     .window-console-data i { width:3px;height:3px;border-radius:50%;background:#e4bd7b;box-shadow:0 0 6px rgba(228,189,123,.55) }
     @media(max-width:800px) {
       .scene--art { min-height:430px }
-      .scene-visual { inset:0 }
-      .scene-visual img { left:0;bottom:0;width:100% }
-      .hero-planet { left:74%;top:70%;width:clamp(88px,12vw,118px) }
+      .scene--art::before { width:370px;height:370px }
+      .hero-planet { left:50%;top:50%;width:clamp(172px,28vw,220px) }
       .future-window { min-height:500px;grid-template-columns:1fr;margin-bottom:60px }
       .future-window-image { object-position:34% center }
       .future-window::before { background:linear-gradient(0deg,rgba(5,9,17,.8) 0%,rgba(5,9,17,.44) 56%,rgba(5,9,17,.08) 100%) }
       .window-content { grid-column:1;align-self:end;justify-self:center;width:calc(100% - 32px);margin:0 16px 18px }
     }
     @media(max-width:560px) {
-      .scene--art { min-height:400px;margin:0 -10px }
-      .scene-visual { inset:0 }
-      .scene-visual img { left:-23%;bottom:0;width:145% }
-      .hero-planet { left:84%;top:75%;width:88px }
+      .scene--art { min-height:350px;margin:0 -10px }
+      .scene--art::before { width:300px;height:300px }
+      .hero-planet { left:50%;top:50%;width:clamp(142px,42vw,176px) }
       .scene-hud { left:4%;right:auto;bottom:5%;width:max-content;padding:10px 12px }
       .scene-hud strong { font-size:9px }
       .future-window { min-height:490px;border-radius:23px }
@@ -168,8 +164,7 @@
         <p class="lead">Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных LLM и аудит вычислительных мощностей под Enterprise-задачи.</p>
         <div class="hero-actions"><a class="button primary" href="#contact">Обсудить задачу <span class="arrow">↗</span></a><a class="button" href="#about">Спектр решений <span class="arrow">↘</span></a></div>
       </div>
-      <div class="scene scene--art" aria-label="Футуристическая девушка держит в ладони вращающуюся голограмму Земли">
-        <div class="scene-visual"><img src="assets/hero-palm.png" alt="" fetchpriority="high"></div>
+      <div class="scene scene--art" role="img" aria-label="Вращающаяся голограмма Земли в космическом пространстве">
         <div class="hero-planet" aria-hidden="true">
           <div class="planet-halo"></div>
           <div class="earth-globe"><svg class="earth-map" viewBox="0 0 720 180"><g><path d="M22 28 39 21 57 24 69 32 84 35 90 47 80 56 85 67 73 75 68 91 55 87 48 72 36 68 32 53 24 50Z M73 82 88 77 99 85 101 97 94 108 98 121 90 139 84 158 76 147 75 128 69 113 72 98Z M145 35 159 28 174 31 183 40 174 47 163 44 156 52 146 47Z M155 53 174 50 186 62 182 80 173 101 164 117 154 100 150 81 148 65Z M180 39 198 25 222 27 241 34 260 32 281 42 292 55 279 65 263 60 250 73 235 64 218 68 205 59 191 63 183 50Z M204 67 217 70 221 82 216 96 209 103 204 91 198 79Z M270 95 286 91 301 99 297 111 282 116 270 107Z"/><path transform="translate(360 0)" d="M22 28 39 21 57 24 69 32 84 35 90 47 80 56 85 67 73 75 68 91 55 87 48 72 36 68 32 53 24 50Z M73 82 88 77 99 85 101 97 94 108 98 121 90 139 84 158 76 147 75 128 69 113 72 98Z M145 35 159 28 174 31 183 40 174 47 163 44 156 52 146 47Z M155 53 174 50 186 62 182 80 173 101 164 117 154 100 150 81 148 65Z M180 39 198 25 222 27 241 34 260 32 281 42 292 55 279 65 263 60 250 73 235 64 218 68 205 59 191 63 183 50Z M204 67 217 70 221 82 216 96 209 103 204 91 198 79Z M270 95 286 91 301 99 297 111 282 116 270 107Z"/></g></svg></div>
