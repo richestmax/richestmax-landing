@@ -90,17 +90,12 @@
     .glass:hover { border-color:rgba(255,226,174,1);box-shadow:0 30px 65px rgba(0,0,0,.32),0 8px 22px rgba(3,16,30,.27),0 0 48px rgba(255,181,66,.78),0 0 82px rgba(255,166,52,.25),inset 0 1.5px 0 rgba(255,255,255,.4),inset 1.5px 0 0 rgba(223,248,255,.18),inset 0 -2px 0 rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,224,160,.85) }
     .scene--art { min-height:480px;overflow:visible }
     .scene--art::before { width:430px;height:430px;background:radial-gradient(circle,rgba(82,158,249,.2),rgba(108,92,205,.09) 42%,transparent 72%) }
-    .hero-planet { position:absolute;left:50%;top:50%;z-index:3;width:clamp(184px,20vw,260px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 24px rgba(69,174,255,.52)) }
-    .planet-halo { position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(69,174,255,.26),rgba(255,186,89,.1) 38%,transparent 70%);filter:blur(12px);animation:planet-pulse 4.5s ease-in-out infinite }
-    .earth-globe { position:absolute;inset:0;overflow:hidden;border:1px solid rgba(186,235,255,.8);border-radius:50%;background:radial-gradient(circle at 33% 27%,#9ef8ff 0,#48c5ed 12%,#1678bd 40%,#0b3d78 72%,#03152e 100%);box-shadow:inset -12px -8px 22px rgba(0,4,18,.72),inset 8px 5px 16px rgba(255,255,255,.25),0 0 24px rgba(53,174,255,.56),0 0 48px rgba(53,174,255,.24) }
-    .earth-globe::after { content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(112deg,rgba(255,255,255,.38),transparent 34%,transparent 68%,rgba(0,5,25,.56));pointer-events:none }
-    .earth-map { position:absolute;left:0;top:0;width:400%;height:100%;fill:#76e0bd;opacity:.83;filter:drop-shadow(0 0 4px rgba(93,255,207,.6));animation:earth-turn 13s linear infinite }
-    .earth-orbit { position:absolute;inset:-15% -15%;border:1px solid rgba(255,219,151,.88);border-radius:50%;transform:rotate(-21deg) scaleY(.48);box-shadow:0 0 9px rgba(255,192,106,.34);animation:earth-ring 8s linear infinite }
-    .earth-orbit::after { content:"";position:absolute;right:10%;top:11%;width:6px;height:6px;border-radius:50%;background:#fff1ce;box-shadow:0 0 8px 3px rgba(255,200,111,.9) }
-    .earth-orbit.two { inset:-24% -8%;border-color:rgba(142,214,255,.58);transform:rotate(38deg) scaleY(.54);animation-duration:11s;animation-direction:reverse }
-    @keyframes earth-turn { to { transform:translateX(-50%) } }
-    @keyframes earth-ring { to { rotate:360deg } }
-    @keyframes planet-pulse { 0%,100% { opacity:.7;transform:scale(.94) } 50% { opacity:1;transform:scale(1.08) } }
+    .hero-planet { position:absolute;left:50%;top:50%;z-index:3;width:clamp(368px,20vw,540px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 0 24px rgba(255,105,35,.42)) }
+    .planet-gif { position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(circle closest-side,#000 92%,transparent 100%);mask-image:radial-gradient(circle closest-side,#000 92%,transparent 100%) }
+    .planet-orbit { position:absolute;inset:-15% -15%;border:1px solid rgba(255,219,151,.88);border-radius:50%;transform:rotate(-21deg) scaleY(.48);box-shadow:0 0 9px rgba(255,192,106,.34);animation:planet-ring 8s linear infinite }
+    .planet-orbit::after { content:"";position:absolute;right:10%;top:11%;width:6px;height:6px;border-radius:50%;background:#fff1ce;box-shadow:0 0 8px 3px rgba(255,200,111,.9) }
+    .planet-orbit.two { inset:-24% -8%;border-color:rgba(142,214,255,.58);transform:rotate(38deg) scaleY(.54);animation-duration:11s;animation-direction:reverse }
+    @keyframes planet-ring { to { rotate:360deg } }
     .scene-hud { position:absolute;left:4%;bottom:8%;z-index:2;display:flex;align-items:center;gap:11px;width:max-content;min-height:0;padding:12px 15px;border-radius:15px }
     .scene-hud > span:last-child { display:grid;gap:3px }
     .scene-hud small { color:#aab5c9;font-size:9px;letter-spacing:.13em }
@@ -164,11 +159,10 @@
         <p class="lead">Перевод хаотичных требований бизнеса в жесткую техническую логику. Специализированное внедрение локальных LLM и аудит вычислительных мощностей под Enterprise-задачи.</p>
         <div class="hero-actions"><a class="button primary" href="#contact">Обсудить задачу <span class="arrow">↗</span></a><a class="button" href="#about">Спектр решений <span class="arrow">↘</span></a></div>
       </div>
-      <div class="scene scene--art" role="img" aria-label="Вращающаяся голограмма Земли в космическом пространстве">
+      <div class="scene scene--art" role="img" aria-label="Анимированное изображение огненной звезды в космическом пространстве">
         <div class="hero-planet" aria-hidden="true">
-          <div class="planet-halo"></div>
-          <div class="earth-globe"><svg class="earth-map" viewBox="0 0 720 180"><g><path d="M22 28 39 21 57 24 69 32 84 35 90 47 80 56 85 67 73 75 68 91 55 87 48 72 36 68 32 53 24 50Z M73 82 88 77 99 85 101 97 94 108 98 121 90 139 84 158 76 147 75 128 69 113 72 98Z M145 35 159 28 174 31 183 40 174 47 163 44 156 52 146 47Z M155 53 174 50 186 62 182 80 173 101 164 117 154 100 150 81 148 65Z M180 39 198 25 222 27 241 34 260 32 281 42 292 55 279 65 263 60 250 73 235 64 218 68 205 59 191 63 183 50Z M204 67 217 70 221 82 216 96 209 103 204 91 198 79Z M270 95 286 91 301 99 297 111 282 116 270 107Z"/><path transform="translate(360 0)" d="M22 28 39 21 57 24 69 32 84 35 90 47 80 56 85 67 73 75 68 91 55 87 48 72 36 68 32 53 24 50Z M73 82 88 77 99 85 101 97 94 108 98 121 90 139 84 158 76 147 75 128 69 113 72 98Z M145 35 159 28 174 31 183 40 174 47 163 44 156 52 146 47Z M155 53 174 50 186 62 182 80 173 101 164 117 154 100 150 81 148 65Z M180 39 198 25 222 27 241 34 260 32 281 42 292 55 279 65 263 60 250 73 235 64 218 68 205 59 191 63 183 50Z M204 67 217 70 221 82 216 96 209 103 204 91 198 79Z M270 95 286 91 301 99 297 111 282 116 270 107Z"/></g></svg></div>
-          <div class="earth-orbit"></div><div class="earth-orbit two"></div>
+          <img class="planet-gif" src="assets/hero-planet.GIF" alt="" fetchpriority="high">
+          <div class="planet-orbit"></div><div class="planet-orbit two"></div>
         </div>
       </div>
     </section>
